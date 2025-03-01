@@ -36,7 +36,7 @@ export default function SubscriptionPage() {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "", 
         amount: razorpayOrder.amount, 
         currency: razorpayOrder.currency,
-        name: "TypeArena",
+        name: "TypeBlaze",
         description: "Lifetime Subscription",
         order_id: razorpayOrder.id, 
         handler: async (response: any) => {
@@ -61,9 +61,9 @@ export default function SubscriptionPage() {
         },
         // can be retrive from the user data
         prefill: {
-          name: "Aman Jain",
-          email: "jainaman0744@gmail.com",
-          contact: "9826747763",
+          name: "Nityanand Yadav",
+          email: "nityanandyadav2324@gmail.com",
+          contact: "6203439160",
         },
         theme: {
           color: "#3399cc",
@@ -80,10 +80,10 @@ export default function SubscriptionPage() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-background flex items-center justify-center p-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">Join TypeArena</h1>
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">Join TypeBlaze</h1>
         <Card className="w-full bg-white dark:bg-gray-800 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center text-yellow-500">Lifetime Access</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center text-blue-500">Lifetime Access</CardTitle>
             <CardDescription className="text-center text-gray-600 dark:text-gray-300">
               Unlock all features forever
             </CardDescription>
@@ -102,7 +102,7 @@ export default function SubscriptionPage() {
                 "Priority support",
               ].map((feature, index) => (
                 <li key={index} className="flex items-center text-gray-600 dark:text-gray-300">
-                  <svg className="w-5 h-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fillRule="evenodd"
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -118,7 +118,7 @@ export default function SubscriptionPage() {
       {isAuthenticated ? (
         <Button
           onClick={handleCheckOut}
-          className="w-full rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 transition duration-300"
+          className="w-full rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 transition duration-300"
         >
           {isLoading ? <Loader2 className="animate-spin" /> : 'Get Lifetime Access'}
         </Button>
@@ -129,7 +129,7 @@ export default function SubscriptionPage() {
               <div className="w-full" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
                 <Button
                   disabled
-                  className="w-full rounded-lg bg-yellow-500 text-white font-bold py-2 px-4 cursor-not-allowed"
+                  className="w-full rounded-lg bg-blue-500 text-white font-bold py-2 px-4 cursor-not-allowed"
                 >
                   Get Lifetime Access
                 </Button>

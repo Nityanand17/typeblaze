@@ -35,3 +35,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Node modules
+node_modules/
+.next/
+out/
+*.log
+package-lock.json
+yarn.lock
+.env.local
+.env.development.local
+.env.production.local

@@ -95,19 +95,19 @@ export default function LoginPage() {
               </label>
             </div>
             <div className="text-sm">
-              <Link href="/forgot-password" className="font-medium text-yellow-600 hover:text-yellow-500">
+              <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
                 Forgot your password?
               </Link>
             </div>
           </div>
-          <Button type="submit" className="w-full text-white hover:bg-yellow-600 bg-yellow-500" disabled={loading}>
+          <Button type="submit" className="w-full text-white hover:bg-blue-600 bg-blue-500" disabled={loading}>
             {loading ? 'Logging in...' : 'Log in'}
           </Button>
         </form>
         <div className="text-center mt-4">
           <p className="text-sm text-gray-600 dark:text-gray-300">
             Don't have an account?{' '}
-            <Link href="/signup" className="font-medium text-yellow-600 hover:text-yellow-500">
+            <Link href="/signup" className="font-medium text-blue-600 hover:text-yellow-500">
               Sign up
             </Link>
           </p>

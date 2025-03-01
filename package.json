@@ -52,5 +52,18 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "description": "TypeBlaze",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nityanand17/typeblaze.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nityanand17/typeblaze/issues"
+  },
+  "homepage": "https://github.com/Nityanand17/typeblaze#readme"
 }
