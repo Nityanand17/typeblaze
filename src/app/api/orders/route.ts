@@ -1,15 +1,16 @@
 import { connectDb } from '@/dbconfig/dbconfig';
 import { getDataFromToken } from '@/lib/getDataFromToken';
 import Order from '@/models/order.model';
-import { NextRequest, NextResponse } from 'next/server'
-import Razorpay from 'razorpay'
+import { NextRequest, NextResponse } from 'next/server';
+import Razorpay from 'razorpay';
 
 const razorpay = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID!,
-    key_secret: process.env.RAZORPAY_KEY_SECRET!,
-})
+    key_id: process.env.RAZORPAY_KEY_ID as string,   
+    key_secret: process.env.RAZORPAY_KEY_SECRET as string,  
+});
 
-export async function POST(request:NextRequest,response:NextResponse ){
+export async function POST(request: NextRequest, response: NextResponse)
+ {
     try {
         const reqUserId = getDataFromToken(request);
         if (!reqUserId) {
@@ -19,28 +20,36 @@ export async function POST(request:NextRequest,response:NextResponse ){
             );
         }
 
-        const {productId , varient} = await request.json();
+        const { productId, varient } = await request.json();
         if (!productId || !varient) {
             return NextResponse.json(
-                { message: "productId and varient is required" },
+                { message: "productId and varient are required" },
                 { status: 400 }
             );
         }
 
         await connectDb();
 
-        //create razorpay order
+        // Create Razorpay order
         const order = await razorpay.orders.create({
-            amount: 900,
+            amount: 900 * 100, // Convert ₹9 to paisa
             currency: 'INR',
             receipt: `receipt-${Date.now()}`,
             notes: {
                 productId: productId.toString(),
                 varient,
             },
-            
-        })
+        });
 
+        // Ensure order was created successfully
+        if (!order || !order.id) {
+            return NextResponse.json(
+                { message: "Failed to create Razorpay order" },
+                { status: 500 }
+            );
+        }
+
+        // Save order in database
         const newOrder = await Order.create({
             userId: reqUserId,
             items: [{
@@ -54,13 +63,20 @@ export async function POST(request:NextRequest,response:NextResponse ){
             paymentStatus: 'pending',
             paymentDate: new Date(),
             razorpayOrderId: order.id,
-        })
+        });
 
-        return  NextResponse.json({message:"order created",order:newOrder,razorpayOrder:order},{status:200})
-        
-    } catch (error:any) {
-        console.log(error)
-        return NextResponse.json({message:"failed to load user"},{status:500})
-        
+        return NextResponse.json({
+            message: "Order created successfully",
+            order: newOrder,
+            razorpayOrder: {
+                id: order.id,
+                amount: order.amount,
+                currency: order.currency,
+            },
+        }, { status: 200 });
+
+    } catch (error: any) {
+        console.error("Error creating order:", error);
+        return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }

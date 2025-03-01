@@ -1,4 +1,5 @@
 import { Hero } from '@/components/custom/Hero'
+
 import { ThemeProvider } from '@/components/theme-providers'
 
 export default function Home() {
