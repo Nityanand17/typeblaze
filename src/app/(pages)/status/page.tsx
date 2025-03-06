@@ -23,7 +23,7 @@ export default function StatusPage() {
 
   const fetchStatus = useCallback(async () => {
     try {
-      const response = await fetch('https://typearena-backend.onrender.com/')
+      const response = await fetch('https://typeblaze-backend.onrender.com/')
       if (!response.ok) {
         throw new Error('Failed to fetch status')
       }
