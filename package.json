@@ -1,6 +1,7 @@
 {
   "name": "typeblaze",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -36,7 +37,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "socket.io-client": "^4.8.0",
+    "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "zipyai": "^1.7.38",
@@ -48,6 +49,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/socket.io-client": "^1.4.36",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "gh-pages": "^6.3.0",
