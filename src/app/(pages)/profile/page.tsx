@@ -59,7 +59,7 @@ export default function ProfilePage() {
   if (!userData) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin  text-yellow-500">
+        <div className="animate-spin  text-blue-500">
           <Loader2 />
         </div>
       </div>
